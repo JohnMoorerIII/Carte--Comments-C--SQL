@@ -1,6 +1,5 @@
 USE [Carte]
 GO
-/****** Object:  StoredProcedure [dbo].[Comments_Update]    Script Date: 1/22/2024 9:01:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
