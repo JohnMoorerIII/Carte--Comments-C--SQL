@@ -6,20 +6,6 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
--- =============================================
--- Author:		<John Moorer>
--- Create date: <9/24/2022
--- Description:	<Insert Proc for Comments Table>
--- Code Reviewer: Ryuichi Matsushita
-
-
--- MODIFIED BY: author
--- MODIFIED DATE:12/1/2020
--- Code Reviewer: 
--- Note: 
--- =============================================
-
 ALTER proc [dbo].[Comments_Insert]
 		@Subject nvarchar(50),
 		@Text nvarchar(3000),
