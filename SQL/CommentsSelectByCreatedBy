@@ -1,0 +1,47 @@
+USE [Carte]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER proc [dbo].[Comments_Select_ByCreatedByV2]
+
+	@CreatedBy int
+
+as
+/*-------------Test Code----------------
+
+	Declare @CreatedBy int = 162
+
+	Execute dbo.Comments_Select_ByCreatedByV2
+										@CreatedBy
+
+*/
+BEGIN
+
+SELECT [c].[Id]
+      ,[c].[Subject]
+      ,[c].[Text]
+      ,[c].[ParentId]
+      ,[c].[EntityTypeId]
+	  ,[et].[Name]
+      ,[c].[EntityId]
+      ,[c].[DateCreated]
+      ,[c].[DateModified]
+      ,[up].[FirstName]
+	  ,[up].[LastName]
+	  ,[up].[Mi]
+	  ,[up].[AvatarUrl]
+	  ,[u].[Email]
+      ,[c].[IsDeleted]
+  FROM [dbo].[Comments] as c
+	inner join dbo.Users as u
+		on c.CreatedBy = u.Id
+	left outer join dbo.UserProfiles as up
+		on u.Id = up.UserId
+	left outer join dbo.EntityTypes as et
+		on et.Id = c.EntityTypeId
+  Where c.CreatedBy = @CreatedBy
+
+END
