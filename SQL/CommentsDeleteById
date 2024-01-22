@@ -1,0 +1,40 @@
+USE [Carte]
+GO
+/****** Object:  StoredProcedure [dbo].[Comments_Delete_ById]    Script Date: 1/22/2024 8:52:41 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER proc [dbo].[Comments_Delete_ById]
+	
+	@Id int
+
+/*---------------Test Code----------------
+
+	Declare @Id int = 24
+
+	Select *
+		From dbo.Comments
+		Where Id = @Id
+				
+	Execute dbo.Comments_Delete_ById
+						@Id 
+							
+		Select *
+		From dbo.Comments
+		Where Id = @Id
+
+*/
+as
+
+BEGIN
+
+UPDATE [dbo].[Comments]
+
+   SET 
+      [IsDeleted] = 1
+
+	  WHERE Id = @Id
+
+ END
