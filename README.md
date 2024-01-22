@@ -1,1 +1,1 @@
-# Carte--Comments-C--SQL
+Carte is an interactive digital menu and ordering platform built for restaurants, incorporating real time menu management with dining and online ordering. Carte is an MVP and due to proprietary nature of the code I can only provide snippets of my code. This repository contains SQL and .NET code for the Comments feature.
