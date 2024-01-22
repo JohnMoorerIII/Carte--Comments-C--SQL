@@ -1,0 +1,67 @@
+USE [Carte]
+GO
+/****** Object:  StoredProcedure [dbo].[Comments_Update]    Script Date: 1/22/2024 9:01:24 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- =============================================
+-- Author:		<John Moorer>
+-- Create date: <9/24/2022>
+-- Description:	<Update Proc for Comments Table>
+-- Code Reviewer: Ryuichi Matsushita
+
+-- MODIFIED BY: author
+-- MODIFIED DATE:12/1/2020
+-- Code Reviewer: 
+-- Note: 
+-- =============================================
+
+ALTER proc [dbo].[Comments_Update]
+
+	@Subject nvarchar(50),
+	@Text nvarchar(3000),
+	@IsDeleted bit,
+	@Id int
+
+/*---------------Test Code----------------
+
+	Declare @Id int = 22
+
+		Select *
+		From dbo.Comments
+		Where Id = @Id
+
+	Declare 	@Subject nvarchar(50) = 'Subject for which comment is submitted updated for testing'
+				,@Text nvarchar(3000) = 'Updated test text for comment text field to be used in comment section to display comment that an entity has submitted to display objective commentary on experience with product. Updated in case of error or change in opinion'
+				,@IsDeleted bit = 0
+				
+	Execute dbo.Comments_Update 
+							 @Subject
+							,@Text
+							,@IsDeleted
+							,@Id 
+							
+		Select *
+		From dbo.Comments
+		Where Id = @Id
+
+*/
+as
+
+BEGIN
+
+	Declare @DateModified datetime2 = getutcdate()
+
+UPDATE [dbo].[Comments]
+
+   SET [Subject] = @Subject
+      ,[Text] = @Text
+	  ,[DateModified] = @DateModified
+      ,[IsDeleted] = @IsDeleted
+
+	  WHERE Id = @Id
+
+ END
